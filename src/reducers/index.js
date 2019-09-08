@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 import {
   SELECT_SUBREDDIT,
   INVALIDATE_SUBREDDIT,
   REQUEST_POSTS,
   RECEIVE_POSTS
-} from '../actions'
+} from '../actions';
 
 function selectedSubreddit(state = 'reactjs', action) {
   switch (action.type) {
@@ -13,7 +13,7 @@ function selectedSubreddit(state = 'reactjs', action) {
     default:
       return state
   }
-}
+};
 
 function posts(
   state = {
@@ -43,7 +43,7 @@ function posts(
     default:
       return state
   }
-}
+};
 
 function postsBySubreddit(state = {}, action) {
   switch (action.type) {
@@ -52,11 +52,11 @@ function postsBySubreddit(state = {}, action) {
     case REQUEST_POSTS:
       return Object.assign({}, state, {
         [action.subreddit]: posts(state[action.subreddit], action)
-      })
+      });
     default:
       return state
   }
-}
+};
 
 const rootReducer = combineReducers({
   postsBySubreddit,
